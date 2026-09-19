@@ -78,3 +78,7 @@ npm run lint    # lint
 ## Goals & roadmap
 
 Feature scope aligns with the OpenWrt LuCI core management surface (third-party luci-app plugins are out of scope). Wireless, switch/VLAN and DNS modules are implemented UCI-config-driven so they remain usable on hardware-less devices; field-level parity with LuCI continues (wireless scan/join, VLAN port matrix, dnsmasq host records, etc.).
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).

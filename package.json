@@ -2,7 +2,7 @@
   "name": "openwrt-console",
   "version": "0.1.0",
   "description": "Web management console for OpenWrt devices: a Next.js BFF talks to the router over SSH (ssh2) and provides a LuCI-aligned UI for status, network/wireless/firewall configuration, system administration, services and a web terminal.",
-  "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
