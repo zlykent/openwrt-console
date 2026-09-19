@@ -1,0 +1,133 @@
+import type { AppSchema } from "../uci-schema";
+
+/**
+ * luci-app-serverchan — "WeChat Push" (ServerChan / enterprise WeChat / TG…).
+ *
+ * Mirrors the official CBI models: `setting.lua` (named `serverchan` section
+ * with the basic / content / crontab / disturb tabs) plus `advanced.lua`,
+ * whose options wrap the same singleton and are folded into an "advanced"
+ * tab here. ListValues whose choices are built at runtime (interfaces, hours)
+ * are plain text fields; everything else keeps its official widget kind.
+ */
+export const serverchan: AppSchema = {
+  slug: "serverchan",
+  name: "WeChat Push",
+  config: "serverchan",
+  sections: [
+    {
+      type: "serverchan",
+      named: "serverchan",
+      tabs: [
+        {
+          id: "basic",
+          fields: [
+            { option: "serverchan_enable", kind: "bool", default: false },
+            { option: "lite_enable", kind: "dynamiclist" },
+            { option: "jsonpath", kind: "text" },
+            { option: "sckey", kind: "text" },
+            { option: "corpid", kind: "text" },
+            { option: "userid", kind: "text" },
+            { option: "agentid", kind: "text" },
+            { option: "corpsecret", kind: "password" },
+            { option: "mediapath", kind: "text" },
+            { option: "wxpusher_apptoken", kind: "text" },
+            { option: "wxpusher_uids", kind: "text" },
+            { option: "wxpusher_topicIds", kind: "text" },
+            { option: "pushplus_token", kind: "text" },
+            { option: "tg_token", kind: "text" },
+            { option: "chat_id", kind: "text" },
+            { option: "diy_json", kind: "textarea" },
+            { option: "device_name", kind: "text" },
+            { option: "sleeptime", kind: "int", min: 10, default: "60" },
+            { option: "oui_data", kind: "text" },
+            { option: "oui_dir", kind: "bool", default: false },
+            { option: "reset_regularly", kind: "bool", default: false },
+            { option: "debuglevel", kind: "bool", default: false },
+            { option: "device_aliases", kind: "dynamiclist" },
+          ],
+        },
+        {
+          id: "content",
+          fields: [
+            { option: "serverchan_ipv4", kind: "text" },
+            { option: "ipv4_interface", kind: "text" },
+            { option: "ipv4_list", kind: "textarea" },
+            { option: "serverchan_ipv6", kind: "text" },
+            { option: "ipv6_interface", kind: "text" },
+            { option: "ipv6_list", kind: "textarea" },
+            { option: "serverchan_up", kind: "bool", default: true },
+            { option: "serverchan_down", kind: "bool", default: true },
+            { option: "cpuload_enable", kind: "bool", default: false },
+            { option: "cpuload", kind: "text", default: "2" },
+            { option: "temperature_enable", kind: "bool", default: false },
+            { option: "temperature", kind: "text" },
+            { option: "client_usage", kind: "bool", default: false },
+            { option: "client_usage_max", kind: "text" },
+            { option: "client_usage_disturb", kind: "bool", default: false },
+            { option: "client_usage_whitelist", kind: "dynamiclist" },
+            { option: "web_logged", kind: "bool", default: false },
+            { option: "ssh_logged", kind: "bool", default: false },
+            { option: "web_login_failed", kind: "bool", default: false },
+            { option: "ssh_login_failed", kind: "bool", default: false },
+            { option: "login_max_num", kind: "text" },
+            { option: "web_login_black", kind: "bool", default: false },
+            { option: "ip_black_timeout", kind: "text" },
+            { option: "ip_white_list", kind: "dynamiclist" },
+            { option: "ip_black_list", kind: "textarea" },
+          ],
+        },
+        {
+          id: "crontab",
+          fields: [
+            { option: "crontab", kind: "text" },
+            { option: "regular_time", kind: "text" },
+            { option: "regular_time_2", kind: "text" },
+            { option: "regular_time_3", kind: "text" },
+            { option: "interval_time", kind: "text" },
+            { option: "send_title", kind: "text" },
+            { option: "router_status", kind: "bool", default: false },
+            { option: "router_temp", kind: "bool", default: false },
+            { option: "router_wan", kind: "bool", default: false },
+            { option: "client_list", kind: "bool", default: false },
+          ],
+        },
+        {
+          id: "disturb",
+          fields: [
+            { option: "serverchan_sheep", kind: "text" },
+            { option: "starttime", kind: "text" },
+            { option: "endtime", kind: "text" },
+            { option: "macmechanism", kind: "text" },
+            { option: "serverchan_whitelist", kind: "dynamiclist" },
+            { option: "serverchan_blacklist", kind: "dynamiclist" },
+            { option: "serverchan_interface", kind: "text" },
+            { option: "macmechanism2", kind: "text" },
+            { option: "MAC_online_list", kind: "dynamiclist" },
+            { option: "MAC_offline_list", kind: "dynamiclist" },
+          ],
+        },
+        {
+          id: "advanced",
+          fields: [
+            { option: "up_timeout", kind: "text" },
+            { option: "down_timeout", kind: "text" },
+            { option: "timeout_retry_count", kind: "text" },
+            { option: "thread_num", kind: "text" },
+            { option: "soc_code", kind: "text" },
+            { option: "server_host", kind: "text" },
+            { option: "server_port", kind: "int", min: 1, max: 65535 },
+            { option: "err_enable", kind: "bool", default: false },
+            { option: "err_sheep_enable", kind: "bool", default: false },
+            { option: "err_device_aliases", kind: "dynamiclist" },
+            { option: "network_err_event", kind: "text" },
+            { option: "system_time_event", kind: "text" },
+            { option: "autoreboot_time", kind: "text" },
+            { option: "network_restart_time", kind: "text" },
+            { option: "public_ip_event", kind: "bool", default: false },
+            { option: "public_ip_retry_count", kind: "text" },
+          ],
+        },
+      ],
+    },
+  ],
+};
